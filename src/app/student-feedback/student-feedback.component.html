@@ -1,0 +1,18 @@
+<h2>Student Feedback Portal</h2>
+
+<form (ngSubmit)="submitFeedback()">
+  <input [(ngModel)]="feedbackData.name" name="name" placeholder="Name" required />
+  <input [(ngModel)]="feedbackData.course" name="course" placeholder="Course" required />
+  <input [(ngModel)]="feedbackData.comment" name="comment" placeholder="Comment" required />
+  <button type="submit">{{ isEdit ? 'Update' : 'Submit' }}</button>
+</form>
+
+<hr />
+
+<ul>
+  <li *ngFor="let fb of feedbackList">
+    {{ fb.name }} ({{ fb.course }}): {{ fb.comment }}
+    <button (click)="editFeedback(fb)">Edit</button>
+    <button (click)="deleteFeedback(fb.id)">Delete</button>
+  </li>
+</ul>
